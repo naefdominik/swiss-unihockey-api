@@ -4,7 +4,7 @@ import Error from "../components/Error.jsx";
 import Loader from "../components/Loader.jsx";
 
 export default function TeamGames() {
-    const { league, gameClass, group, teamId, season } = useParams();
+    const { league, gameClass, group, teamId, season } = useParams(); // find teamId by calling Table API first and search WinU
 
     const [games, setGames] = useState([]);
     const [images, setImages] = useState(new Map());
@@ -75,7 +75,7 @@ export default function TeamGames() {
                             <div className="w-20">
                                 {logoHome
                                     ? <img src={logoHome} alt={home} className="w-full ml-auto" />
-                                    : <span>{home}</span>
+                                    : <div className="inline-block bg-white text-black px-3 font-bold text-center">{home}</div>
                                 }
                             </div>
                             <div className="min-w-32 text-center text-2xl font-bold" style={{
@@ -86,7 +86,7 @@ export default function TeamGames() {
                             <div className="w-20">
                                 {logoGuest
                                     ? <img src={logoGuest} alt={guest} className="w-full" />
-                                    : <span>{guest}</span>
+                                    : <div className="inline-block bg-white text-black px-3 font-bold text-center">{guest}</div>
                                 }
                             </div>
                         </div>

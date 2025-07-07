@@ -4,7 +4,7 @@ import Error from "../components/Error.jsx";
 import Loader from "../components/Loader.jsx";
 
 export default function TeamTable() {
-    const { league, gameClass, group, season } = useParams();
+    const { league, gameClass, group, season } = useParams(); // response von irgendeinem funktionierenden Call untersuchen, um Parameter für neue Teams zu finden
 
     const [rows, setRows] = useState([]);
     const [headers, setHeaders] = useState([]);
