@@ -5,7 +5,7 @@ export default function Home() {
 
     return (
         <div className="relative">
-            <video autoPlay loop muted playsInline className="w-full">
+            <video autoPlay loop muted playsInline className="w-full bg-[#222222] aspect-video">
                 <source src={trailer} type="video/mp4" />
             </video>
 
