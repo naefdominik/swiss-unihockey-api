@@ -60,32 +60,32 @@ export default function TeamGames() {
                     const isWWUHome = home.startsWith("UHC Winterthur United");
                     const isWWUGuest = guest.startsWith("UHC Winterthur United");
                     const won = (isWWUHome && homeGoals > guestGoals) || (isWWUGuest && guestGoals > homeGoals);
-                    scoreColor = won ? "#00aa84" : "#aa0026";
+                    scoreColor = won ? "#00aa84" : "#FA0707";
                 }
 
                 return (
-                    <div key={i} className="flex gap-10 px-4 py-3 rounded-lg text-white" style={{
-                        backgroundColor: isToday ? "#393a3d" : "black",
+                    <div key={i} className="flex flex-wrap gap-10 px-8 py-5 text-white" style={{
+                        backgroundColor: isToday ? "#393a3d" : "#222222",
                     }}>
                         <div className="flex-1 flex flex-col justify-center">
                             <p className="font-bold">{row.cells[0].text[0]}, {row.cells[0].text[1]}</p>
                             <p>{row.cells[1].text.at(-1)}</p>
                         </div>
-                        <div className="flex-2 flex items-center justify-between gap-10">
-                            <div className="flex-1 text-right">
+                        <div className="flex-2 flex items-center justify-center gap-10">
+                            <div className="w-20">
                                 {logoHome
-                                    ? <img src={logoHome} alt={home} className="w-16 ml-auto" />
+                                    ? <img src={logoHome} alt={home} className="w-full ml-auto" />
                                     : <span>{home}</span>
                                 }
                             </div>
-                            <div className="flex-none text-center" style={{
+                            <div className="min-w-32 text-center text-2xl font-bold" style={{
                                 color: scoreColor
                             }}>
                                 <strong>{scoreText}</strong>
                             </div>
-                            <div className="flex-1 text-left">
+                            <div className="w-20">
                                 {logoGuest
-                                    ? <img src={logoGuest} alt={guest} className="w-16" />
+                                    ? <img src={logoGuest} alt={guest} className="w-full" />
                                     : <span>{guest}</span>
                                 }
                             </div>

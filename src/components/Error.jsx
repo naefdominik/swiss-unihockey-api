@@ -1,4 +1,4 @@
-import winuLogo from "../assets/logo_positive.png";
+import winuLogo from "../assets/logo_black.png";
 
 export default function Error({ error }) {
     return (

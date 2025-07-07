@@ -39,31 +39,33 @@ export default function PastClubGames() {
             {games.map((row, i) => {
                 let scoreText = row.cells[5].text.join(" ") || "vs";
                 let scoreColor = "white";
+
+                const home = row.cells[3].text;
+                const guest = row.cells[4].text;
+
+                const isWWUHome = /^UHC Winterthur United/.test(home);
+                const isWWUGuest = /^UHC Winterthur United/.test(guest);
+                const opponent = isWWUHome ? guest : home;
+
                 if (scoreText.includes(":")) {
                     const [homeGoals, guestGoals] = scoreText.split(" ")[0].split(":").map(Number);
-                    const home = row.cells[3].text;
-                    const guest = row.cells[4].text;
-                    const isWWUHome = /^UHC Winterthur United/.test(home);
-                    const isWWUGuest = /^UHC Winterthur United/.test(guest);
                     const won = (isWWUHome && homeGoals > guestGoals) || (isWWUGuest && guestGoals > homeGoals);
-                    scoreColor = won ? "#00aa84" : "#aa0026";
+                    scoreColor = won ? "#00AA84" : "#FA0707";
                 }
 
                 return (
-                    <div key={i} className="flex gap-10 px-4 py-3 rounded-lg text-white bg-black">
-                        <div className="flex-1">
+                    <div key={i} className="flex flex-wrap gap-10 px-8 py-5 text-white bg-[#222222]">
+                        <div className="flex-1 flex flex-col justify-center">
                             <p className="font-bold">{row.cells[2].text.join(", ")}</p>
-                            <p>{row.cells[0].text[0]}, {row.cells[0].text[1]}</p>
-                            <p>{row.cells[1].text.at(-1)}</p>
+                            <p>{row.cells[0].text[0]} in {row.cells[1].text.at(-1)}</p>
                         </div>
-                        <div className="flex-2 flex items-center justify-between gap-10">
-                            <div className="flex-1 text-right">{row.cells[3].text}</div>
-                            <div className="flex-none text-center" style={{
+                        <div className="flex-2 flex flex-col items-center gap-1">
+                            <div className="text-2xl font-bold" style={{
                                 color: scoreColor,
                             }}>
                                 <strong>{scoreText}</strong>
                             </div>
-                            <div className="flex-1 text-left">{row.cells[4].text}</div>
+                            <div className="bg-white text-black px-3 font-bold text-center">vs. {opponent}</div>
                         </div>
                     </div>
                 );

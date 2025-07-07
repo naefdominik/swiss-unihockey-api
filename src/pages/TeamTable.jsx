@@ -34,7 +34,7 @@ export default function TeamTable() {
     return (
         <div>
             <table className="w-full">
-                <thead className="bg-black text-white">
+                <thead className="bg-[#222222] text-white">
                 <tr>
                     {headers.map((header, idx) => (
                         <th key={idx} className={`text-left px-3 py-2 ${showColumn(idx) ? '' : 'hidden sm:table-cell'}`}>
