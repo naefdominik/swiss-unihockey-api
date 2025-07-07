@@ -10,6 +10,7 @@ export default function App() {
               <p>Diese Webseite stellt die Daten von SwissUnihockey für die WinU Website bereit.</p>
               <p className="pt-3">Folgende Anzeigen sind verfügbar:</p>
               <ul className="pt-1 list-disc list-inside">
+                  <li><a href="/home" className="text-[#E3000B]">Home</a> - Startseite mit Trailer.</li>
                   <li><a href="/club-games-past/club_id/444/season/2025" className="text-[#E3000B]">Vergangene Club Spiele</a> - Zeigt vergangene Spiele eines Clubs an.</li>
                   <li><a href="/club-games-future/club_id/444/season/2025" className="text-[#E3000B]">Zukünftige Club Spiele</a> - Zeigt zukünftige Spiele eines Clubs an.</li>
                   <li><a href="/team-games/league/4/game_class/11/group/Gruppe+4/team_id/409379/season/2024" className="text-[#E3000B]">Team Spiele</a> - Zeigt Spiele eines Teams in einer Saison an.</li>

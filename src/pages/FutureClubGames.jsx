@@ -58,7 +58,7 @@ export default function FutureClubGames() {
                                     : <div className="inline-block bg-white text-black px-3 font-bold text-center">{row.cells[3].text}</div>
                                 }
                             </div>
-                            <div className="flex-none text-center text-2xl font-bold">
+                            <div className="flex-none text-center text-3xl font-bold" style={{ fontFamily: "SupremeLLTT" }}>
                                 <strong>{row.cells[5].text[0] || "vs."}</strong>
                             </div>
                             <div className="flex-1 text-left min-w-18">

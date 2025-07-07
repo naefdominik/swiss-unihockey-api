@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@font-face{
+  font-family: "SupremeLLTT";
+  src:local("SupremeLLTT-Black"),
+  url('./assets/SupremeLLTT-Black.ttf');
+}
+
 :root {
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1.5;

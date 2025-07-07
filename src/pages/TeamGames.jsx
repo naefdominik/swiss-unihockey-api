@@ -78,8 +78,9 @@ export default function TeamGames() {
                                     : <div className="inline-block bg-white text-black px-3 font-bold text-center">{home}</div>
                                 }
                             </div>
-                            <div className="min-w-32 text-center text-2xl font-bold" style={{
-                                color: scoreColor
+                            <div className="min-w-35 text-center text-3xl font-bold" style={{
+                                color: scoreColor,
+                                fontFamily: "SupremeLLTT"
                             }}>
                                 <strong>{scoreText}</strong>
                             </div>

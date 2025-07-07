@@ -7,11 +7,13 @@ import TeamTable from "./pages/TeamTable.jsx";
 import TeamGames from "./pages/TeamGames.jsx";
 import FutureClubGames from "./pages/FutureClubGames.jsx";
 import PastClubGames from "./pages/PastClubGames.jsx";
+import Home from "./pages/Home.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
       <BrowserRouter>
           <Routes>
+              <Route path="/home" element={<Home />} />
               <Route path="/club-games-past/club_id/:clubId/season/:season" element={<PastClubGames />} />
               <Route path="/club-games-future/club_id/:clubId/season/:season" element={<FutureClubGames />} />
               <Route path="/team-games/league/:league/game_class/:gameClass/group/:group/team_id/:teamId/season/:season" element={<TeamGames />} />
