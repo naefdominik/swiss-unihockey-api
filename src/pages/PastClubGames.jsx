@@ -59,7 +59,7 @@ export default function PastClubGames() {
                             <p className="font-bold">{row.cells[2].text.join(", ")}</p>
                             <p>{row.cells[0].text[0]} in {row.cells[1].text.at(-1)}</p>
                         </div>
-                        <div className="flex-2 flex flex-col items-center gap-1">
+                        <div className="flex-2 flex flex-col items-center justify-center gap-1">
                             <div className="text-2xl font-bold" style={{
                                 color: scoreColor,
                             }}>
