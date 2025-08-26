@@ -1,5 +1,5 @@
 import trailer from '../assets/trailer-compressed.mp4';
-import overlay from '../assets/overlay-40.png';
+import overlay from '../assets/overlay-40-compressed.png';
 
 export default function Home() {
 
