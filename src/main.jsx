@@ -8,6 +8,7 @@ import TeamGames from "./pages/TeamGames.jsx";
 import FutureClubGames from "./pages/FutureClubGames.jsx";
 import PastClubGames from "./pages/PastClubGames.jsx";
 import Home from "./pages/Home.jsx";
+import { Analytics } from "@vercel/analytics/react"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,5 +22,6 @@ createRoot(document.getElementById('root')).render(
               <Route path="*" element={<App />} />
           </Routes>
       </BrowserRouter>
+      <Analytics />
   </StrictMode>,
 )
