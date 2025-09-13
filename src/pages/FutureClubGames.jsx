@@ -22,7 +22,10 @@ export default function FutureClubGames() {
                 const rows = data.data.regions[0].rows;
                 const future = rows
                     .filter(row => {
-                        const [d, m, y] = row.cells[0].text[0].split(".").map(Number);
+                        const rawDate = row.cells[0].text[0];
+                        if (rawDate.toLowerCase() === "heute") return true;
+
+                        const [d, m, y] = rawDate.split(".").map(Number);
                         const date = new Date(y, m - 1, d);
                         return date >= today;
                     })
@@ -38,9 +41,10 @@ export default function FutureClubGames() {
     return (
         <div className="flex flex-col gap-3">
             {games.map((row, i) => {
-                const [d, m, y] = row.cells[0].text[0].split(".").map(Number);
+                const rawDate = row.cells[0].text[0];
+                const [d, m, y] = rawDate.split(".").map(Number);
                 const date = new Date(y, m - 1, d);
-                const isToday = new Date().toDateString() === date.toDateString();
+                const isToday = new Date().toDateString() === date.toDateString() || rawDate.toLowerCase() === "heute";
 
                 return (
                     <div key={i} className="flex flex-wrap gap-10 px-8 py-5 text-white" style={{

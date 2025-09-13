@@ -44,9 +44,10 @@ export default function TeamGames() {
     return (
         <div className="flex flex-col gap-3">
             {games.map((row, i) => {
-                const [d, m, y] = row.cells[0].text[0].split(".").map(Number);
+                const rawDate = row.cells[0].text[0];
+                const [d, m, y] = rawDate.split(".").map(Number);
                 const date = new Date(y, m - 1, d);
-                const isToday = new Date().toDateString() === date.toDateString();
+                const isToday = new Date().toDateString() === date.toDateString() || rawDate.toLowerCase() === "heute";
 
                 const home = row.cells[2].text[0];
                 const guest = row.cells[3].text[0];
