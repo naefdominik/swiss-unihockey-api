@@ -47,7 +47,7 @@ export default function FutureClubGames() {
                 const isToday = new Date().toDateString() === date.toDateString() || rawDate.toLowerCase() === "heute";
 
                 return (
-                    <div key={i} className="flex flex-wrap gap-10 px-8 py-5 text-white" style={{
+                    <div key={i} className="flex flex-wrap max-[420px]:flex-col gap-10 px-8 py-5 text-white" style={{
                         backgroundColor: isToday ? "#393a3d" : "#222222",
                     }}>
                         <div className="flex-1">

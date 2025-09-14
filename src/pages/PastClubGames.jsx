@@ -58,7 +58,7 @@ export default function PastClubGames() {
                 }
 
                 return (
-                    <div key={i} className="flex flex-wrap gap-10 px-8 py-5 text-white bg-[#222222]">
+                    <div key={i} className="flex flex-wrap max-[420px]:flex-col gap-10 px-8 py-5 text-white bg-[#222222]">
                         <div className="flex-1 flex flex-col justify-center">
                             <p className="font-bold">{row.cells[2].text.join(", ")}</p>
                             <p>{row.cells[0].text[0]} in {row.cells[1].text.at(-1)}</p>
