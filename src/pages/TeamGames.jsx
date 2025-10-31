@@ -60,8 +60,10 @@ export default function TeamGames() {
                     const [homeGoals, guestGoals] = scoreText.split(" ")[0].split(":").map(Number);
                     const isWWUHome = home.startsWith("UHC Winterthur United");
                     const isWWUGuest = guest.startsWith("UHC Winterthur United");
+                    const isDraw = homeGoals === guestGoals;
                     const won = (isWWUHome && homeGoals > guestGoals) || (isWWUGuest && guestGoals > homeGoals);
-                    scoreColor = won ? "#00aa84" : "#FA0707";
+
+                    if (!isDraw) scoreColor = won ? "#00aa84" : "#FA0707";
                 }
 
                 return (

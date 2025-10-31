@@ -53,8 +53,10 @@ export default function PastClubGames() {
 
                 if (scoreText.includes(":")) {
                     const [homeGoals, guestGoals] = scoreText.split(" ")[0].split(":").map(Number);
+                    const isDraw = homeGoals === guestGoals;
                     const won = (isWWUHome && homeGoals > guestGoals) || (isWWUGuest && guestGoals > homeGoals);
-                    scoreColor = won ? "#00AA84" : "#FA0707";
+
+                    if (!isDraw) scoreColor = won ? "#00AA84" : "#FA0707";
                 }
 
                 return (
