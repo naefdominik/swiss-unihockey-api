@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Error from "../components/Error.jsx";
 import Loader from "../components/Loader.jsx";
 
@@ -13,7 +13,7 @@ export default function TeamTable() {
         season      // e.g. "2025"
     } = useParams();
 
-    const [rows, setRows] = useState([]);
+    const [regions, setRegions] = useState([]);
     const [headers, setHeaders] = useState([]);
     const [error, setError] = useState(null);
 
@@ -30,41 +30,49 @@ export default function TeamTable() {
             })
             .then(data => {
                 setHeaders(data.data.headers);
-                setRows(data.data.regions[0].rows);
+                setRegions(data.data.regions);
             })
             .catch(err => setError(err.message));
     }, [season, league, gameClass, group]);
 
     if (error) return <Error error={error}/>;
-    if (!rows.length) return <Loader />;
+    if (!regions.length) return <Loader />;
 
     return (
-        <div>
-            <table className="w-full">
-                <thead className="bg-[#222222] text-white">
-                <tr>
-                    {headers.map((header, idx) => (
-                        <th key={idx} className={`text-left px-3 py-2 ${showColumn(idx) ? '' : 'hidden sm:table-cell'}`}>
-                            {header.text}
-                        </th>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
-                {rows.map((row, i) => (
-                    <tr key={i} className={row.data.team.name.startsWith("UHC Winterthur United") ? 'font-bold text-[#E3000B] bg-[#FFF5F5]' : ''}>
-                        {row.cells.map((cell, idx) => (
-                            <td key={idx} className={`px-3 py-2 ${showColumn(idx) ? '' : 'hidden sm:table-cell'}`}>
-                                {cell.image ? (
-                                    <img src={cell.image.url} alt={cell.image.alt || ''} className="h-6" />
-                                ) : null}
-                                {cell.text ? cell.text.join(" ") : null}
-                            </td>
-                        ))}
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+        <div className="space-y-6">
+            {regions.map((region, regionIdx) => (
+                <div key={regionIdx}>
+                    {region.text && (
+                        <h2 className="text-xl font-bold mb-1">{region.text}</h2>
+                    )}
+                    
+                    <table className="w-full">
+                        <thead className="bg-[#222222] text-white">
+                            <tr>
+                                {headers.map((header, idx) => (
+                                    <th key={idx} className={`text-left px-3 py-2 ${showColumn(idx) ? '' : 'hidden sm:table-cell'}`}>
+                                        {header.text}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {region.rows.map((row, i) => (
+                                <tr key={i} className={row.data.team.name.startsWith("UHC Winterthur United") ? 'font-bold text-[#E3000B] bg-[#FFF5F5]' : ''}>
+                                    {row.cells.map((cell, idx) => (
+                                        <td key={idx} className={`px-3 py-2 ${showColumn(idx) ? '' : 'hidden sm:table-cell'}`}>
+                                            {cell.image ? (
+                                                <img src={cell.image.url} alt={cell.image.alt || ''} className="h-6" />
+                                            ) : null}
+                                            {cell.text ? cell.text.join(" ") : null}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ))}
         </div>
     );
 }
