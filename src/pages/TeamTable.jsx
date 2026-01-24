@@ -3,8 +3,15 @@ import {useEffect, useState} from "react";
 import Error from "../components/Error.jsx";
 import Loader from "../components/Loader.jsx";
 
+// Höhe (Pixel) in FairGate = 400
+// Link: https://swiss-unihockey-api.vercel.app/team-table/league/a/game_class/b/group/Gruppe+c/season/d
 export default function TeamTable() {
-    const { league, gameClass, group, season } = useParams(); // response von irgendeinem funktionierenden Call untersuchen, um Parameter für neue Teams zu finden
+    const {
+        league,     // https://api-v2.swissunihockey.ch/api/leagues 
+        gameClass,  // https://api-v2.swissunihockey.ch/api/leagues
+        group,      // e.g. "Gruppe+9" auf myapp.swissunihockey.ch herausfinden
+        season      // e.g. "2025"
+    } = useParams();
 
     const [rows, setRows] = useState([]);
     const [headers, setHeaders] = useState([]);

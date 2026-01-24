@@ -3,8 +3,16 @@ import {useEffect, useState} from "react";
 import Error from "../components/Error.jsx";
 import Loader from "../components/Loader.jsx";
 
+// Höhe (Pixel) in FairGate = 1111
+// Link: https://swiss-unihockey-api.vercel.app/team-games/league/a/game_class/b/group/Gruppe+c/team_id/d/season/e
 export default function TeamGames() {
-    const { league, gameClass, group, teamId, season } = useParams(); // find teamId by calling Table API first and search WinU
+    const {
+        league,     // https://api-v2.swissunihockey.ch/api/leagues
+        gameClass,  // https://api-v2.swissunihockey.ch/api/leagues
+        group,      // e.g. "Gruppe+9" auf myapp.swissunihockey.ch herausfinden
+        teamId,     // https://api-v2.swissunihockey.ch/api/teams?mode=by_club&club_id=444&season=2025
+        season      // e.g. 2024
+    } = useParams();
 
     const [games, setGames] = useState([]);
     const [images, setImages] = useState(new Map());
