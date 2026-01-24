@@ -11,7 +11,7 @@ export default function TeamGames() {
         gameClass,  // https://api-v2.swissunihockey.ch/api/leagues
         group,      // e.g. "Gruppe+9" auf myapp.swissunihockey.ch herausfinden
         teamId,     // https://api-v2.swissunihockey.ch/api/teams?mode=by_club&club_id=444&season=2025
-        season      // e.g. 2024
+        season      // e.g. 2025
     } = useParams();
 
     const [games, setGames] = useState([]);
