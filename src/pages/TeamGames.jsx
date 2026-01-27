@@ -30,13 +30,16 @@ export default function TeamGames() {
                 const gamesData = await gamesRes.json();
 
                 const logoMap = new Map();
-                rankingData.data.regions[0].rows.forEach(row => {
-                    const name = row.data.team.name;
-                    const imageCell = row.cells.find(cell => cell.image);
-                    if (imageCell?.image?.url) {
-                        logoMap.set(name, imageCell.image.url);
-                    }
-                });
+                if (rankingData?.data?.regions?.[0]?.rows) {
+                    rankingData.data.regions[0].rows.forEach(row => {
+                        const name = row.data?.team?.name;
+                        const imageCell = row.cells?.find(cell => cell.image);
+                        if (name && imageCell?.image?.url) {
+                            logoMap.set(name, imageCell.image.url);
+                        }
+                    });
+                }
+
                 setImages(logoMap);
                 setGames(gamesData.data.regions[0].rows);
             } catch (e) {
@@ -44,7 +47,7 @@ export default function TeamGames() {
             }
         }
         fetchData();
-    }, [season, teamId]);
+    }, [season, teamId, league, gameClass, group]);
 
     if (error) return <Error error={error}/>;
     if (!games.length) return <Loader />;
