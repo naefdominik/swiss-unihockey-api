@@ -9,3 +9,4 @@ Folgende Anzeigen sind verfügbar:
 - `Zukünftige Club Spiele` Zeigt zukünftige Spiele eines Clubs an.
 - `Team Spiele` Zeigt Spiele eines Teams in einer Saison an.
 - `Team Tabelle` Zeigt die Tabelle eines Teams in einer Liga an.
+
